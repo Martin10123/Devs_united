@@ -1,0 +1,117 @@
+.posted__box {
+  width: 100%;
+  margin: 1rem 0;
+  position: relative;
+  border-bottom: 2px solid white;
+}
+
+.posted__content {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.posted__content > img {
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.posted__info_user {
+  width: 100%;
+  display: flex;
+}
+
+.posted__info_user b {
+  height: 100%;
+  color: #fff;
+  padding: 0 1rem;
+}
+
+.posted__info_user p {
+  height: 100%;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.posted__contain__info_posted {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.posted__description {
+  width: 100%;
+  margin: 1.2rem 0;
+  box-sizing: border-box;
+}
+
+.posted__description p {
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 1.666667px;
+}
+
+.posted__btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.posted__btns button:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+
+.posted__btns button:nth-child(1) > img {
+  width: 2rem;
+}
+
+.posted__btns button:nth-child(1) > p {
+  color: #fff;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.posted__btns button:nth-child(1),
+.posted__btns button:nth-child(2) {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1020px) and (max-width: 1300px) {
+  .posted__content > img {
+    width: 9rem;
+  }
+
+  .posted__info_user p {
+    font-size: 2.7rem;
+  }
+
+  .posted__info_user b {
+    font-size: 2rem;
+  }
+
+  .posted__description p {
+    font-size: 2rem;
+  }
+
+  .posted__btns button:nth-child(1) > img,
+  .posted__btns button:nth-child(2) > img {
+    width: 4rem;
+  }
+
+  .posted__btns button:nth-child(1) > p {
+    font-size: 3.5rem;
+  }
+
+  .posted__btns {
+    margin: 1rem 0;
+  }
+}

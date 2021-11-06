@@ -1,0 +1,130 @@
+.tweet__box {
+  width: 100%;
+  margin: 1rem 0;
+  position: relative;
+  border-bottom: 2px solid white;
+}
+
+.tweet__content {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.tweet__content > img {
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.tweet__info_user {
+  width: 100%;
+  display: flex;
+}
+
+.tweet__info_user b {
+  height: 100%;
+  color: #fff;
+  padding: 0 1rem;
+}
+
+.tweet__info_user p {
+  height: 100%;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.tweet__info_user p.tweet__info_autor {
+  height: 100%;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.tweet__contain__info_tweet {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.tweet__description {
+  width: 100%;
+  margin: 1.2rem 0;
+  box-sizing: border-box;
+}
+
+.tweet__description p {
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 1.666667px;
+}
+
+.tweet__btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tweet__btns button:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+
+.tweet__btns button:nth-child(1) > img {
+  width: 2rem;
+}
+
+.tweet__btns button:nth-child(1) > p {
+  color: #fff;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.tweet__btns button:nth-child(1),
+.tweet__btns button:nth-child(2) {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1020px) and (max-width: 1300px) {
+  .tweet__content > img {
+    width: 6.5rem;
+  }
+
+  .tweet__info_user p {
+    font-size: 2rem;
+  }
+
+  .tweet__info_user b {
+    font-size: 1.5rem;
+  }
+
+  .tweet__description p {
+    font-size: 1.7rem;
+  }
+
+  .tweet__btns button:nth-child(1) > img,
+  .tweet__btns button:nth-child(2) > img {
+    width: 2rem;
+  }
+
+  .tweet__btns button:nth-child(1) > p {
+    font-size: 2rem;
+  }
+
+  .tweet__btns {
+    margin: 1rem 0;
+  }
+}
+
+@media (min-width: 1300px) {
+  .tweet__content {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

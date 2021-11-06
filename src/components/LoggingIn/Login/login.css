@@ -1,0 +1,190 @@
+.login__box-info {
+  width: 100%;
+  position: relative;
+  color: #fff;
+}
+
+.login__box-img {
+  width: 100%;
+  height: 100%;
+  padding: 4rem 2rem;
+}
+
+.login__box-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.login__box-in {
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.login__box-in h1 {
+  font-size: 3rem;
+}
+
+form.form__login,
+.login__select-color {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+form.form__login input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.3rem;
+  background: #00000075;
+  color: #fff;
+  border: none;
+  outline: 0;
+}
+
+.login__box-color-select {
+  width: 100%;
+  height: 3.3rem;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 0.6rem;
+}
+
+.login__select-color p {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.contain_color {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.login__box-color-select + button.btn_disable,
+.login__box-color-select + button.btn_on {
+  width: 100%;
+  height: 4rem;
+  margin: 0.5rem 0;
+  font-size: 1.7rem;
+  border: none;
+  background: #00da76;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login__box-color-select + button.btn_disable {
+  background: gray;
+  cursor: default;
+}
+
+@media (min-width: 768px) {
+  .login__box-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login__box-img img {
+    width: 80%;
+  }
+
+  .login__box-in h1 {
+    font-size: 5rem;
+  }
+
+  form input {
+    padding: 2rem;
+    font-size: 2rem;
+  }
+
+  .login__select-color p {
+    font-size: 2.4rem;
+  }
+
+  .login__box-color-select {
+    height: 5.3rem;
+  }
+
+  .login__box-color-select + button {
+    height: 5rem;
+    font-size: 2.7rem;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 1300px) {
+  .login__box-img img {
+    width: 50%;
+  }
+
+  form.form__login,
+  .login__select-color {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login__box-in h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  form.form__login input {
+    width: 70%;
+    font-size: 1.7rem;
+  }
+
+  .login__box-color-select,
+  .login__box-color-select + button,
+  .login__box-color-select + button.btn_disable {
+    width: 62%;
+  }
+}
+
+@media (min-width: 1300px) {
+  .login__box-info {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .login__box-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login__box-img img {
+    width: 70%;
+  }
+
+  .login__box-in {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .login__content_info {
+    width: 60%;
+  }
+
+  .login__box-in h1 {
+    font-size: 4.5rem;
+  }
+
+  form {
+    width: 100%;
+    margin: 0;
+  }
+
+  form input {
+    padding: 1.2rem;
+  }
+
+  .login__select-color p {
+    font-size: 2.4rem;
+    padding: 1rem 0;
+    text-align: start;
+  }
+}

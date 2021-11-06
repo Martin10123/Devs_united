@@ -1,0 +1,103 @@
+.filtros__box {
+  width: 100%;
+  padding: 2rem 1rem;
+  position: relative;
+  background: #0f0a0e78;
+}
+
+.filtros__content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 5fr;
+}
+
+.filtros__box_img img {
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+form.filtros__post_tweet {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+form.filtros__post_tweet textarea {
+  width: 100%;
+  height: 12rem;
+  padding: 1rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+  border: none;
+  background: #0000007a;
+  color: #fff;
+}
+
+.filtros__btn_post {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+form.filtros__post_tweet button.btn_disable_on,
+form.filtros__post_tweet button.btn_disable_off {
+  width: 40%;
+  height: 2.5rem;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  letter-spacing: 4.666667px;
+  border: none;
+  background: #2f112d;
+}
+
+form.filtros__post_tweet button.btn_disable_off {
+  background: #00da76;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .filtros__box_img {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1020px) and (max-width: 1300px) {
+  .filtros__box_img > img {
+    width: 6rem;
+  }
+
+  form.filtros__post_tweet textarea {
+    height: 18rem;
+    font-size: 1.5rem;
+  }
+
+  .filtros__btn_post > b {
+    font-size: 1.3rem;
+  }
+
+  form.filtros__post_tweet button {
+    height: 5rem;
+    margin: 2rem 0;
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .filtros__content {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  form.filtros__post_tweet button {
+    width: 23%;
+  }
+}

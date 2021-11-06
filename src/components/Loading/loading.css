@@ -1,0 +1,27 @@
+.loading_color {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background: black;
+  color: white;
+  z-index: 1234;
+}
+
+.loading_content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading_color h1 {
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+.loading_color img {
+  width: 20rem;
+}

@@ -1,0 +1,150 @@
+.background-color {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: #210e20;
+}
+
+.header__user_profile {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  position: relative;
+  background: #210e20;
+  color: #fff;
+}
+
+.header__profile_content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.span_user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo_back {
+  font-size: 2rem;
+}
+
+.header__user_profile p {
+  font-size: 1.5rem;
+}
+
+.header__user_profile button {
+  width: 7rem;
+  height: 2.4rem;
+  font-size: 1.5rem;
+  background: #f50d5a;
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header__photo_profile {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  background: #2d132c;
+}
+
+.header__photo_content {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__photo_content img {
+  width: 70%;
+  border-radius: 50%;
+  border: 6px solid yellow;
+}
+
+.header__photo_content p {
+  font-size: 2.5rem;
+  padding: 2rem;
+  color: white;
+}
+
+.header__tabs {
+  width: 100%;
+  position: relative;
+}
+
+.header__tabs_content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.header__info_post h2,
+.header__info_favorites h2 {
+  font-size: 2.3rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active {
+  transition: 0.5s ease-in-out;
+  background: #60265b;
+}
+
+@media (min-width: 768px) {
+  .header__photo_content img {
+    width: 50%;
+  }
+
+  .header__photo_content p {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1020px) and (max-width: 1300px) {
+  .header__photo_content img {
+    width: 20%;
+  }
+
+  .span_user {
+    width: 36%;
+  }
+
+  .logo_back,
+  .header__user_profile p {
+    font-size: 3.2rem;
+  }
+
+  .header__user_profile button {
+    width: 12rem;
+    height: 3.8rem;
+    font-size: 2.3rem;
+  }
+
+  .header__info_post h2,
+  .header__info_favorites h2 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .header__setting_size {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .header__photo_content img {
+    width: 20%;
+  }
+
+  .header__profile_content {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

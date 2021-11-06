@@ -1,0 +1,117 @@
+.favorite__box {
+  width: 100%;
+  margin: 1rem 0;
+  position: relative;
+  border-bottom: 2px solid white;
+}
+
+.favorite__content {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.favorite__content > img {
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.favorite__info_user {
+  width: 100%;
+  display: flex;
+}
+
+.favorite__info_user b {
+  height: 100%;
+  color: #fff;
+  padding: 0 1rem;
+}
+
+.favorite__info_user p {
+  height: 100%;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.favorite__contain__info_favorite {
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.favorite__description {
+  width: 100%;
+  margin: 1.2rem 0;
+  box-sizing: border-box;
+}
+
+.favorite__description p {
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 1.666667px;
+}
+
+.favorite__btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favorite__btns button:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+
+.favorite__btns button:nth-child(1) > img {
+  width: 2rem;
+}
+
+.favorite__btns button:nth-child(1) > p {
+  color: #fff;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.favorite__btns button:nth-child(1),
+.favorite__btns button:nth-child(2) {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1020px) and (max-width: 1300px) {
+  .favorite__content > img {
+    width: 9rem;
+  }
+
+  .favorite__info_user p {
+    font-size: 2.7rem;
+  }
+
+  .favorite__info_user b {
+    font-size: 2rem;
+  }
+
+  .favorite__description p {
+    font-size: 2rem;
+  }
+
+  .favorite__btns button:nth-child(1) > img,
+  .favorite__btns button:nth-child(2) > img {
+    width: 4rem;
+  }
+
+  .favorite__btns button:nth-child(1) > p {
+    font-size: 3.5rem;
+  }
+
+  .favorite__btns {
+    margin: 1rem 0;
+  }
+}
