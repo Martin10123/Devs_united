@@ -1,3 +1,9 @@
+.contain_info_box_tweet {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
 .tweet__box {
   width: 100%;
   margin: 1rem 0;
@@ -44,7 +50,6 @@
 
 .tweet__contain__info_tweet {
   width: 100%;
-  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -60,6 +65,7 @@
   font-size: 1.1rem;
   color: #fff;
   letter-spacing: 1.666667px;
+  word-break: break-all;
 }
 
 .tweet__btns {

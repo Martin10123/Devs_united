@@ -1,25 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
 import { colors, ColorsContext } from "../../../context/PainterColor";
+import { UserContext } from "../../../context/UsernameContext";
 import logo from "../../../images/logo.svg";
 
 import "./login.css";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
   const [disabledUser, setDisabledUser] = useState(false);
+  const { sentTweet, handleSentTweet } = useContext(UserContext);
   const { setColorSelect } = useContext(ColorsContext);
 
-  const handleSentLogin = (e) => {
-    setUsername(e.target.value);
-  };
-
   useEffect(() => {
-    if (username.length <= 4 && username.length <= 25) {
+    if (sentTweet.username?.length <= 4 && sentTweet.username?.length <= 25) {
       setDisabledUser(false);
     } else {
       setDisabledUser(true);
     }
-  }, [username]);
+  }, [sentTweet.username]);
 
   return (
     <>
@@ -36,8 +33,8 @@ const Login = () => {
             <form className="form__login">
               <input
                 name="username"
-                value={username}
-                onChange={handleSentLogin}
+                value={sentTweet?.username}
+                onChange={handleSentTweet}
                 autoComplete="off"
                 maxLength="25"
                 required

@@ -28,10 +28,6 @@ const Posted = ({ tweet, likes, autor, date, url }) => {
           </div>
           <div className="posted__btns">
             <button>
-              <img src={noLike} alt="no like" />
-              <p>{likes ? likes : 0}</p>
-            </button>
-            <button>
               <img src={trash} alt="trash" />
             </button>
           </div>

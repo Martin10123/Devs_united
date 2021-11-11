@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import { CollectionContext } from "../../../context/efectTweets";
+import { UserContext } from "../../../context/UsernameContext";
 import { collections, firestore } from "../../../firebase/firebaseConfig";
 
 import userImg from "../../../images/user.png";
@@ -13,25 +14,9 @@ import "./filtros.css";
 
 const Filtros = () => {
   const { tweets, user } = useContext(CollectionContext);
+  const { sentTweet, handleSentTweet, setSentTweet } = useContext(UserContext);
   const [disabled, setDisabled] = useState(false);
   const [didMount, setDidMount] = useState(false);
-
-  const [sentTweet, setSentTweet] = useState({
-    tweet: "",
-    autor: "",
-    uid: "",
-  });
-
-  const handleSentTweet = ({ target }) => {
-    let nuevoArrayValues = {
-      tweet: target.value,
-      autor: user?.displayName,
-      uid: user?.uid,
-      date: new Date().getTime(),
-      url: user?.photoURL,
-    };
-    setSentTweet(nuevoArrayValues);
-  };
 
   useEffect(() => {
     setDidMount(true);
@@ -64,7 +49,7 @@ const Filtros = () => {
     try {
       await firestore
         .doc(`${collections.tweets}/${id}`)
-        .update({ likes: !likes ? likes + 1 : likes - 1 });
+        .update({ likes: likes + 1 });
     } catch (error) {
       Swal.fire("", error.message, "error");
     }
@@ -121,16 +106,18 @@ const Filtros = () => {
           </form>
         </div>
       </div>
-      {tweets.map((data) => {
-        return (
-          <ViewTweets
-            key={data.id}
-            data={data}
-            clickSubmitLike={handleLike}
-            handleDelete={handleDelete}
-          />
-        );
-      })}
+      <div className="contain_info_box_tweet">
+        {tweets.map((data) => {
+          return (
+            <ViewTweets
+              key={data.id}
+              data={data}
+              clickSubmitLike={handleLike}
+              handleDelete={handleDelete}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };
