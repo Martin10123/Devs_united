@@ -50,6 +50,7 @@
 
 .tweet__contain__info_tweet {
   width: 100%;
+  padding: 0 0.7rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -130,7 +131,18 @@
 
 @media (min-width: 1300px) {
   .tweet__content {
+    width: 100%;
+    margin: 2rem 0;
+  }
+
+  .tweet__box {
     width: 50%;
-    margin: 0 auto;
+    margin: 0;
+  }
+
+  .contain_info_box_tweet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

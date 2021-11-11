@@ -3,7 +3,6 @@ import moment from "moment";
 import "moment/locale/es";
 
 import user from "../../../images/user.png";
-import noLike from "../../../images/noLike.svg";
 import trash from "../../../images/trash.svg";
 
 import "./posted.css";

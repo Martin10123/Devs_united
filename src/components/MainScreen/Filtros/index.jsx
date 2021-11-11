@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -13,22 +13,21 @@ import ViewTweets from "../ViewTweets";
 import "./filtros.css";
 
 const Filtros = () => {
+  const isMountedRef = useRef(true);
   const { tweets, user } = useContext(CollectionContext);
   const { sentTweet, handleSentTweet, setSentTweet } = useContext(UserContext);
   const [disabled, setDisabled] = useState(false);
-  const [didMount, setDidMount] = useState(false);
+  // const [didMount, setDidMount] = useState(false);
 
   useEffect(() => {
-    setDidMount(true);
-
-    if (sentTweet.tweet?.trim().length <= 0) {
+    if (isMountedRef.current && sentTweet.tweet?.trim().length <= 0) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
 
     return () => {
-      setDidMount(false);
+      isMountedRef.current = false;
     };
   }, [sentTweet.tweet]);
 
@@ -64,9 +63,9 @@ const Filtros = () => {
     }
   };
 
-  if (!didMount) {
-    return null;
-  }
+  // if (!didMount) {
+  //   return null;
+  // }
 
   return (
     <>
