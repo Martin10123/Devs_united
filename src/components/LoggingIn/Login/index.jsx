@@ -1,22 +1,48 @@
 import React, { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { CollectionContext } from "../../../context/efectTweets";
 import { colors, ColorsContext } from "../../../context/PainterColor";
-import { UserContext } from "../../../context/UsernameContext";
+import { firestore } from "../../../firebase/firebaseConfig";
+// import { UserContext } from "../../../context/UsernameContext";
 import logo from "../../../images/logo.svg";
 
 import "./login.css";
 
 const Login = () => {
+  const { user } = useContext(CollectionContext);
   const [disabledUser, setDisabledUser] = useState(false);
-  const { sentTweet, handleSentTweet } = useContext(UserContext);
-  const { setColorSelect } = useContext(ColorsContext);
+  const [sentUser, setSentUser] = useState({
+    user: "",
+  });
+  const { colorSelect, setColorSelect } = useContext(ColorsContext);
+
+  const handleChangeUser = ({ target }) => {
+    const newData = {
+      user: target.value,
+      color: colorSelect.hex,
+      uid: user.uid,
+    };
+
+    setSentUser(newData);
+  };
 
   useEffect(() => {
-    if (sentTweet.username?.length <= 4 && sentTweet.username?.length <= 25) {
+    if (sentUser.user?.length <= 4 && sentUser.user?.length <= 25) {
       setDisabledUser(false);
     } else {
       setDisabledUser(true);
     }
-  }, [sentTweet.username]);
+  }, [sentUser.user]);
+
+  const handleInputChange = async (e) => {
+    e.preventDefault();
+    try {
+      await firestore.collection("users").add(sentUser);
+      setSentUser({ user: "" });
+    } catch (error) {
+      Swal.fire("", error.message, "error");
+    }
+  };
 
   return (
     <>
@@ -30,11 +56,11 @@ const Login = () => {
             <h1>
               WELCOME <b>NAME!</b>
             </h1>
-            <form className="form__login">
+            <form onSubmit={handleInputChange} className="form__login">
               <input
-                name="username"
-                value={sentTweet?.username}
-                onChange={handleSentTweet}
+                name="user"
+                value={sentUser?.user}
+                onChange={handleChangeUser}
                 autoComplete="off"
                 maxLength="25"
                 required
@@ -55,7 +81,9 @@ const Login = () => {
                 {!disabledUser ? (
                   <button className="btn_disable">Continue</button>
                 ) : (
-                  <button className="btn_on">Continue</button>
+                  <button type="submit" className="btn_on">
+                    Continue
+                  </button>
                 )}
               </div>
             </form>

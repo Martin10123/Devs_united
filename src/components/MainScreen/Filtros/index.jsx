@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import { CollectionContext } from "../../../context/efectTweets";
-import { UserContext } from "../../../context/UsernameContext";
 import { collections, firestore } from "../../../firebase/firebaseConfig";
 
 import userImg from "../../../images/user.png";
@@ -13,23 +12,39 @@ import ViewTweets from "../ViewTweets";
 import "./filtros.css";
 
 const Filtros = () => {
-  const isMountedRef = useRef(true);
   const { tweets, user } = useContext(CollectionContext);
-  const { sentTweet, handleSentTweet, setSentTweet } = useContext(UserContext);
   const [disabled, setDisabled] = useState(false);
-  // const [didMount, setDidMount] = useState(false);
+  const [isMounted, setIsMouted] = useState(false);
+  const [sentTweet, setSentTweet] = useState({
+    tweet: "",
+    username: "",
+    autor: "",
+    uid: "",
+  });
 
   useEffect(() => {
-    if (isMountedRef.current && sentTweet.tweet?.trim().length <= 0) {
+    setIsMouted(true);
+    if (sentTweet.tweet?.trim().length <= 0) {
       setDisabled(false);
     } else {
       setDisabled(true);
     }
 
     return () => {
-      isMountedRef.current = false;
+      setIsMouted(false);
     };
   }, [sentTweet.tweet]);
+
+  const handleSentTweet = ({ target }) => {
+    let nuevoArrayValues = {
+      [target.name]: target.value,
+      autor: user?.displayName,
+      uid: user?.uid,
+      date: new Date().getTime(),
+      url: user?.photoURL,
+    };
+    setSentTweet(nuevoArrayValues);
+  };
 
   const clickSentTweets = async (e) => {
     e.preventDefault();
@@ -63,9 +78,9 @@ const Filtros = () => {
     }
   };
 
-  // if (!didMount) {
-  //   return null;
-  // }
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>

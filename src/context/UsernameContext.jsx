@@ -1,32 +1,30 @@
-import { createContext, useContext, useState } from "react";
-import { CollectionContext } from "./efectTweets";
+import { createContext, useEffect, useState } from "react";
+import { firestore } from "../firebase/firebaseConfig";
 
 const UserContext = createContext();
 
 const UsernameContext = ({ children }) => {
-  const { user } = useContext(CollectionContext);
-  const [sentTweet, setSentTweet] = useState({
-    tweet: "",
-    username: "",
-    autor: "",
-    uid: "",
-  });
+  const [usersName, setUsersName] = useState([]);
 
-  const handleSentTweet = ({ target }) => {
-    let nuevoArrayValues = {
-      [target.name]: target.value,
-      autor: user?.displayName,
-      uid: user?.uid,
-      date: new Date().getTime(),
-      url: user?.photoURL,
-    };
-    setSentTweet(nuevoArrayValues);
-  };
+  useEffect(() => {
+    firestore
+      .collection("users")
+      .get()
+      .then((users) => {
+        const user = users.docs.map((user) => {
+          return {
+            id: user.id,
+            user: user.data().user,
+            color: user.data().color,
+            uid: user.data().uid,
+          };
+        });
+        setUsersName(user);
+      });
+  }, []);
 
   const returns = {
-    sentTweet,
-    handleSentTweet,
-    setSentTweet,
+    usersName,
   };
 
   return (

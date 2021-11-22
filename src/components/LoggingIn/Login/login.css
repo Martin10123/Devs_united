@@ -62,7 +62,7 @@ form.form__login input {
 
 .login__box-color-select + button.btn_disable,
 .login__box-color-select + button.btn_on {
-  width: 100%;
+  width: 61%;
   height: 4rem;
   margin: 0.5rem 0;
   font-size: 1.7rem;
