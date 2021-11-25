@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import moment from "moment";
 import "moment/locale/es";
 
+import { CollectionContext } from "../../../context/efectTweets";
 import userImg from "../../../images/user.png";
 import trash from "../../../images/trash.svg";
 
 import "./posted.css";
 
-const Posted = ({ tweet, color, user, date, url }) => {
+const Posted = ({ id, tweet, color, user, date, url }) => {
+  const { handleDelete } = useContext(CollectionContext);
   const dateNote = moment(date);
 
   return (
@@ -27,7 +29,7 @@ const Posted = ({ tweet, color, user, date, url }) => {
             <p>{tweet}</p>
           </div>
           <div className="posted__btns">
-            <button>
+            <button onClick={() => handleDelete(id)}>
               <img src={trash} alt="trash" />
             </button>
           </div>

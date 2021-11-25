@@ -80,7 +80,11 @@ const Profile = () => {
               {tweets.map(
                 (posted) =>
                   posted.username.uid === user.uid && (
-                    <Posted key={posted.id} {...posted.username} />
+                    <Posted
+                      key={posted.id}
+                      id={posted.id}
+                      {...posted.username}
+                    />
                   )
               )}
             </div>

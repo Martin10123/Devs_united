@@ -18,6 +18,9 @@ const UsernameContext = ({ children }) => {
             setUsersName(doc.data());
           }
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, [user?.uid]);
 

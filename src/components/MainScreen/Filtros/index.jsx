@@ -13,7 +13,7 @@ import ViewTweets from "../ViewTweets";
 import "./filtros.css";
 
 const Filtros = () => {
-  const { tweets, user } = useContext(CollectionContext);
+  const { tweets, user, handleDelete } = useContext(CollectionContext);
   const { usersName } = useContext(UserContext);
   const [disabled, setDisabled] = useState(false);
   const [isMounted, setIsMouted] = useState(false);
@@ -62,15 +62,6 @@ const Filtros = () => {
       await firestore
         .doc(`${collections.tweets}/${id}`)
         .update({ likes: likes + 1 });
-    } catch (error) {
-      Swal.fire("", error.message, "error");
-    }
-  };
-
-  const handleDelete = async (tweetId) => {
-    try {
-      await firestore.doc(`${collections.tweets}/${tweetId}`).delete();
-      Swal.fire("", "Su nota se borro con exito", "success");
     } catch (error) {
       Swal.fire("", error.message, "error");
     }

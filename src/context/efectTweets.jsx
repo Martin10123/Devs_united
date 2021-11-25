@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { collections, firestore, firebase } from "../firebase/firebaseConfig";
 
 export const CollectionContext = createContext();
@@ -39,11 +40,21 @@ export const EfectTweets = ({ children }) => {
     };
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await firestore.doc(`${collections.tweets}/${id}`).delete();
+      Swal.fire("", "Su nota se borro con exito", "success");
+    } catch (error) {
+      Swal.fire("", error.message, "error");
+    }
+  };
+
   const returns = {
     user,
     tweets,
     loading,
     authenticated,
+    handleDelete,
   };
 
   return (
