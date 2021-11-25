@@ -44,8 +44,9 @@
 
 .tweet__info_user p.tweet__info_autor {
   height: 100%;
+  padding: 0.1rem;
   font-size: 1.4rem;
-  color: #fff;
+  color: #000;
 }
 
 .tweet__contain__info_tweet {

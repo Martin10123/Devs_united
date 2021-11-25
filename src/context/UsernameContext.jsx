@@ -1,27 +1,25 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { firestore } from "../firebase/firebaseConfig";
+import { CollectionContext } from "./efectTweets";
 
 const UserContext = createContext();
 
 const UsernameContext = ({ children }) => {
+  const { user } = useContext(CollectionContext);
   const [usersName, setUsersName] = useState([]);
 
   useEffect(() => {
     firestore
       .collection("users")
       .get()
-      .then((users) => {
-        const user = users.docs.map((user) => {
-          return {
-            id: user.id,
-            user: user.data().user,
-            color: user.data().color,
-            uid: user.data().uid,
-          };
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          if (user?.uid === doc.data().uid) {
+            setUsersName(doc.data());
+          }
         });
-        setUsersName(user);
       });
-  }, []);
+  }, [user?.uid]);
 
   const returns = {
     usersName,

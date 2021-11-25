@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import { CollectionContext } from "../../../context/efectTweets";
+import { UserContext } from "../../../context/UsernameContext";
 import { collections, firestore } from "../../../firebase/firebaseConfig";
 
 import userImg from "../../../images/user.png";
@@ -13,13 +14,11 @@ import "./filtros.css";
 
 const Filtros = () => {
   const { tweets, user } = useContext(CollectionContext);
+  const { usersName } = useContext(UserContext);
   const [disabled, setDisabled] = useState(false);
   const [isMounted, setIsMouted] = useState(false);
   const [sentTweet, setSentTweet] = useState({
     tweet: "",
-    username: "",
-    autor: "",
-    uid: "",
   });
 
   useEffect(() => {
@@ -37,11 +36,10 @@ const Filtros = () => {
 
   const handleSentTweet = ({ target }) => {
     let nuevoArrayValues = {
-      [target.name]: target.value,
-      autor: user?.displayName,
-      uid: user?.uid,
+      tweet: target.value,
       date: new Date().getTime(),
       url: user?.photoURL,
+      ...usersName,
     };
     setSentTweet(nuevoArrayValues);
   };

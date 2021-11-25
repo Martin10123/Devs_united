@@ -16,12 +16,7 @@ export const EfectTweets = ({ children }) => {
         const arrayTweets = snapshot.docs.map((doc) => {
           return {
             id: doc.id,
-            tweet: doc.data().tweet,
-            likes: doc.data().likes,
-            autor: doc.data().autor,
-            uid: doc.data().uid,
-            date: doc.data().date,
-            url: doc.data().url,
+            username: doc.data(),
           };
         });
 

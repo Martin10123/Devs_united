@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
+
 import { CollectionContext } from "../../../context/efectTweets";
 import { colors, ColorsContext } from "../../../context/PainterColor";
 import { firestore } from "../../../firebase/firebaseConfig";
-// import { UserContext } from "../../../context/UsernameContext";
+
 import logo from "../../../images/logo.svg";
 
 import "./login.css";
@@ -15,6 +17,8 @@ const Login = () => {
     user: "",
   });
   const { colorSelect, setColorSelect } = useContext(ColorsContext);
+
+  const history = useHistory();
 
   const handleChangeUser = ({ target }) => {
     const newData = {
@@ -39,6 +43,7 @@ const Login = () => {
     try {
       await firestore.collection("users").add(sentUser);
       setSentUser({ user: "" });
+      history.go(0);
     } catch (error) {
       Swal.fire("", error.message, "error");
     }
@@ -54,7 +59,7 @@ const Login = () => {
         <div className="login__box-in">
           <div className="login__content_info">
             <h1>
-              WELCOME <b>NAME!</b>
+              WELCOME <b>{user?.displayName}!</b>
             </h1>
             <form onSubmit={handleInputChange} className="form__login">
               <input

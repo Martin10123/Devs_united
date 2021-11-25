@@ -2,7 +2,7 @@ import React from "react";
 
 import { Route, Redirect } from "react-router-dom";
 
-const PrivateRoute = ({
+const PublicRouteLogin = ({
   isAuthenticated,
   usersName,
   component: Component,
@@ -12,8 +12,8 @@ const PrivateRoute = ({
     <Route
       {...rest}
       component={(props) =>
-        usersName.uid === undefined || !isAuthenticated ? (
-          <Redirect to="/register" />
+        usersName.uid !== undefined ? (
+          <Redirect to="/" />
         ) : (
           <Component {...props} />
         )
@@ -22,4 +22,4 @@ const PrivateRoute = ({
   );
 };
 
-export default PrivateRoute;
+export default PublicRouteLogin;

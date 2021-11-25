@@ -10,11 +10,11 @@ import "./App.css";
 const OurApp = () => {
   return (
     <EfectTweets>
-      <ColorsProvider>
-        <UsernameContext>
+      <UsernameContext>
+        <ColorsProvider>
           <AppRouter />
-        </UsernameContext>
-      </ColorsProvider>
+        </ColorsProvider>
+      </UsernameContext>
     </EfectTweets>
   );
 };
