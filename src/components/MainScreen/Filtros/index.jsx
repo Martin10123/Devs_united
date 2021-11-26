@@ -56,15 +56,14 @@ const Filtros = () => {
     }
   };
 
-  const handleLike = async (id, likes) => {
-    if (!likes) likes = 0;
-    try {
-      await firestore
-        .doc(`${collections.tweets}/${id}`)
-        .update({ likes: likes + 1 });
-    } catch (error) {
-      Swal.fire("", error.message, "error");
-    }
+  const handleLike = async (id, uid) => {
+    console.log(id, "Yo soy el documento");
+    console.log(uid, "Yo soy el usuario");
+    // try {
+    //   await firestore.doc(`${collections.tweets}/${id}`).update(id, uid);
+    // } catch (error) {
+    //   Swal.fire("", error.message, "error");
+    // }
   };
 
   if (!isMounted) {

@@ -3,20 +3,28 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import { CollectionContext } from "../../../context/efectTweets";
-import { colors, ColorsContext } from "../../../context/PainterColor";
 import { firestore } from "../../../firebase/firebaseConfig";
 
 import logo from "../../../images/logo.svg";
 
 import "./login.css";
 
+const colors = [
+  { name: "rosado", hex: "#ffa6c9" },
+  { name: "naranja", hex: "#FF865C" },
+  { name: "amarillo", hex: "#FFEA5C" },
+  { name: "verde", hex: "#00DA76" },
+  { name: "azul", hex: "#0096CE" },
+  { name: "morado", hex: "#800FFF" },
+];
+
 const Login = () => {
   const { user } = useContext(CollectionContext);
+  const [colorSelect, setColorSelect] = useState(colors[0]);
   const [disabledUser, setDisabledUser] = useState(false);
   const [sentUser, setSentUser] = useState({
     user: "",
   });
-  const { colorSelect, setColorSelect } = useContext(ColorsContext);
 
   const history = useHistory();
 
@@ -27,16 +35,25 @@ const Login = () => {
       uid: user.uid,
     };
 
+    console.log(newData);
     setSentUser(newData);
   };
 
   useEffect(() => {
-    if (sentUser.user?.length <= 4 && sentUser.user?.length <= 25) {
+    if (
+      sentUser.user?.trim().length <= 4 &&
+      sentUser.user?.trim().length <= 25
+    ) {
       setDisabledUser(false);
     } else {
       setDisabledUser(true);
     }
   }, [sentUser.user]);
+
+  const handleChangeColor = (id, color) => {
+    console.log(id, color);
+    setColorSelect(color);
+  };
 
   const handleInputChange = async (e) => {
     e.preventDefault();
@@ -79,7 +96,7 @@ const Login = () => {
                       key={i}
                       className="contain_color"
                       style={{ backgroundColor: color.hex }}
-                      onClick={() => setColorSelect(color)}
+                      onClick={() => handleChangeColor(i, color)}
                     />
                   ))}
                 </div>

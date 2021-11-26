@@ -77,6 +77,10 @@ form.form__login input {
   cursor: default;
 }
 
+.selected {
+  border: 7px solid white;
+}
+
 @media (min-width: 768px) {
   .login__box-img {
     display: flex;

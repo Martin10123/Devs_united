@@ -35,6 +35,7 @@ form.filtros__post_tweet textarea {
   border: none;
   background: #0000007a;
   color: #fff;
+  resize: none;
 }
 
 .filtros__btn_post {

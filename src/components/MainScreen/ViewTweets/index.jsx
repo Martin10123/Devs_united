@@ -36,11 +36,9 @@ const ViewTweets = ({ data, handleDelete, clickSubmitLike }) => {
             <p>{data.username.tweet}</p>
           </div>
           <div className="tweet__btns">
-            <button
-              onClick={() => clickSubmitLike(data.id, data.username.likes)}
-            >
+            <button onClick={() => clickSubmitLike(data.id, data.username.uid)}>
               <img src={noLike} alt="no like" />
-              <p>{data.likes ? data.likes : 0}</p>
+              <p>{0}</p>
             </button>
             {data.username.uid === user.uid && (
               <button onClick={() => handleDelete(data.id)}>

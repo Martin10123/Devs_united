@@ -1,7 +1,6 @@
 import React from "react";
 
 import { EfectTweets } from "./context/efectTweets";
-import { ColorsProvider } from "./context/PainterColor";
 import AppRouter from "./routers/AppRouter";
 import { UsernameContext } from "./context/UsernameContext";
 
@@ -11,9 +10,7 @@ const OurApp = () => {
   return (
     <EfectTweets>
       <UsernameContext>
-        <ColorsProvider>
-          <AppRouter />
-        </ColorsProvider>
+        <AppRouter />
       </UsernameContext>
     </EfectTweets>
   );
