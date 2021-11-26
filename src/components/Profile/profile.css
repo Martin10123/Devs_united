@@ -35,15 +35,55 @@
 }
 
 .header__user_profile button {
-  width: 7rem;
-  height: 2.4rem;
-  font-size: 1.5rem;
-  background: #f50d5a;
-  border: 1px solid;
-  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid white;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
+  cursor: pointer;
+}
+
+.down_icons {
+  font-size: 2rem;
+  color: white;
+}
+
+.profile_dropdown {
+  width: 18rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  position: absolute;
+  left: 36%;
+  top: 100%;
+  z-index: 20;
+  background: white;
+  color: black;
+}
+
+.profile_dropdown::before {
+  content: "";
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: white;
+  position: absolute;
+  transform: rotate(45deg);
+  left: 70%;
+  top: -2%;
+}
+
+.profile_dropdown > h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+ul.profile_ul_dropdown {
+}
+
+ul.profile_ul_dropdown li {
 }
 
 .header__photo_profile {
@@ -99,11 +139,11 @@
 
 @media (min-width: 768px) {
   .header__photo_content img {
-    width: 50%;
+    width: 30%;
   }
 
   .header__photo_content p {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -122,9 +162,9 @@
   }
 
   .header__user_profile button {
-    width: 12rem;
+    /* width: 12rem;
     height: 3.8rem;
-    font-size: 2.3rem;
+    font-size: 2.3rem; */
   }
 
   .header__info_post h2,

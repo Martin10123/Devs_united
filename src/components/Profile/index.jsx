@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 
 import { CollectionContext } from "../../context/efectTweets";
-import { firebase } from "../../firebase/firebaseConfig";
+// import { firebase } from "../../firebase/firebaseConfig";
 import { IoIosArrowBack, IoIosLogOut } from "react-icons/io";
+import { AiFillCaretDown } from "react-icons/ai";
 
 import userPhoto from "../../images/user.png";
 import Posted from "./Posted";
@@ -10,7 +11,7 @@ import Favorites from "./Favorite";
 
 import "./profile.css";
 import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
@@ -19,14 +20,14 @@ const Profile = () => {
 
   const history = useHistory();
 
-  const logout = async () => {
-    try {
-      await firebase.auth().signOut();
-      Swal.fire("", "Se ha deslogueado con exito", "success");
-    } catch (error) {
-      Swal.fire("", error.mesagge, "error");
-    }
-  };
+  // const logout = async () => {
+  //   try {
+  //     await firebase.auth().signOut();
+  //     Swal.fire("", "Se ha deslogueado con exito", "success");
+  //   } catch (error) {
+  //     Swal.fire("", error.mesagge, "error");
+  //   }
+  // };
 
   const returnHome = () => {
     history.replace("/home");
@@ -41,10 +42,17 @@ const Profile = () => {
             <IoIosArrowBack className="logo_back" />
             {user?.displayName ? <p>{user.displayName}</p> : <p>Username</p>}
           </span>
-          <button onClick={logout}>
-            <span>Logout</span>
-            <IoIosLogOut />
+          <button>
+            <AiFillCaretDown className="down_icons" />
           </button>
+          <div className="profile_dropdown">
+            <h2>{user.displayName}</h2>
+            <ul className="profile_ul_dropdown">
+              <li>Cambiar mi nombre de usuario</li>
+              <li>Cerrar cessión</li>
+              <li>Borrar mi cuenta</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div className="header__photo_profile">

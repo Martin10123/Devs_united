@@ -50,15 +50,14 @@ const Login = () => {
     }
   }, [sentUser.user]);
 
-  const handleChangeColor = (id, color) => {
-    console.log(id, color);
+  const handleChangeColor = (color) => {
     setColorSelect(color);
   };
 
   const handleInputChange = async (e) => {
     e.preventDefault();
     try {
-      await firestore.collection("users").add(sentUser);
+      await firestore.collection(`username/${user?.uid}/data`).add(sentUser);
       setSentUser({ user: "" });
       history.go(0);
     } catch (error) {
@@ -96,7 +95,7 @@ const Login = () => {
                       key={i}
                       className="contain_color"
                       style={{ backgroundColor: color.hex }}
-                      onClick={() => handleChangeColor(i, color)}
+                      onClick={() => handleChangeColor(color)}
                     />
                   ))}
                 </div>

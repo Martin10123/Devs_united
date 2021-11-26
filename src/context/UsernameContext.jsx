@@ -10,7 +10,7 @@ const UsernameContext = ({ children }) => {
 
   useEffect(() => {
     firestore
-      .collection("users")
+      .collection(`username/${user?.uid}/data`)
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
