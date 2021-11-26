@@ -46,7 +46,7 @@ const Profile = () => {
             <AiFillCaretDown className="down_icons" />
           </button>
           <div className="profile_dropdown">
-            <h2>{user.displayName}</h2>
+            <h2>{user?.displayName}</h2>
             <ul className="profile_ul_dropdown">
               <li>Cambiar mi nombre de usuario</li>
               <li>Cerrar cessión</li>

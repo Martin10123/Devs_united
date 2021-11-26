@@ -52,7 +52,7 @@
 }
 
 .profile_dropdown {
-  width: 18rem;
+  width: 16rem;
   padding: 1.5rem;
   border-radius: 1.5rem;
   position: absolute;
@@ -71,7 +71,7 @@
   background: white;
   position: absolute;
   transform: rotate(45deg);
-  left: 70%;
+  left: 81%;
   top: -2%;
 }
 
