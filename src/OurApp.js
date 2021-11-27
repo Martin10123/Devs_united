@@ -1,18 +1,21 @@
 import React from "react";
 
-import { EfectTweets } from "./context/efectTweets";
 import AppRouter from "./routers/AppRouter";
+import { EfectTweets } from "./context/efectTweets";
 import { UsernameContext } from "./context/UsernameContext";
+import { UserContext } from "./context/UserGoogleContext";
 
 import "./App.css";
 
 const OurApp = () => {
   return (
-    <EfectTweets>
+    <UserContext>
       <UsernameContext>
-        <AppRouter />
+        <EfectTweets>
+          <AppRouter />
+        </EfectTweets>
       </UsernameContext>
-    </EfectTweets>
+    </UserContext>
   );
 };
 

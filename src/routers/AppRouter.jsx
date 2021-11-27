@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import LoadingPage from "../components/Loading";
 
-import { CollectionContext } from "../context/efectTweets";
+import { UserGoogleContext } from "../context/UserGoogleContext";
 import { UserContext } from "../context/UsernameContext";
 import Login from "../components/LoggingIn/Login";
 import Register from "../components/LoggingIn/Register";
@@ -12,7 +12,7 @@ import SecondRouter from "./SecondRouter";
 import PublicRouteLogin from "./PublicRouteLogin";
 
 const AppRouter = () => {
-  const { loading, authenticated } = useContext(CollectionContext);
+  const { loading, authenticated } = useContext(UserGoogleContext);
   const { usersName } = useContext(UserContext);
 
   if (loading) {
@@ -30,6 +30,7 @@ const AppRouter = () => {
             component={Register}
           />
           <PublicRouteLogin
+            isAuthenticated={authenticated}
             usersName={usersName}
             exact
             path="/login"

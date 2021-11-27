@@ -1,14 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { collections, firestore, firebase } from "../firebase/firebaseConfig";
+
+import { collections, firestore } from "../firebase/firebaseConfig";
 
 export const CollectionContext = createContext();
 
 export const EfectTweets = ({ children }) => {
-  const [user, setUser] = useState(null);
   const [tweets, setTweets] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     const cancelSuscription = firestore
@@ -23,17 +21,6 @@ export const EfectTweets = ({ children }) => {
 
         setTweets(arrayTweets);
       });
-
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-        setAuthenticated(true);
-      } else {
-        setAuthenticated(false);
-      }
-    });
-
-    setLoading(false);
 
     return () => {
       return cancelSuscription();
@@ -50,10 +37,7 @@ export const EfectTweets = ({ children }) => {
   };
 
   const returns = {
-    user,
     tweets,
-    loading,
-    authenticated,
     handleDelete,
   };
 

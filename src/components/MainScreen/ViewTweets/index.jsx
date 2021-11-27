@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import moment from "moment";
 import "moment/locale/es";
 
-import { CollectionContext } from "../../../context/efectTweets";
+import { UserGoogleContext } from "../../../context/UserGoogleContext";
 import userImg from "../../../images/user.png";
 import noLike from "../../../images/noLike.svg";
 // import like from "../../../images/like.svg";
@@ -11,7 +11,7 @@ import trash from "../../../images/trash.svg";
 import "./viewTweets.css";
 
 const ViewTweets = ({ data, handleDelete, clickSubmitLike }) => {
-  const { user } = useContext(CollectionContext);
+  const { user } = useContext(UserGoogleContext);
   const dateNote = moment(data.username.date);
 
   return (

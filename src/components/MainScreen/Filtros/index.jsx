@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 import { CollectionContext } from "../../../context/efectTweets";
+import { UserGoogleContext } from "../../../context/UserGoogleContext";
 import { UserContext } from "../../../context/UsernameContext";
 import { collections, firestore } from "../../../firebase/firebaseConfig";
 
@@ -13,8 +14,10 @@ import ViewTweets from "../ViewTweets";
 import "./filtros.css";
 
 const Filtros = () => {
-  const { tweets, user, handleDelete } = useContext(CollectionContext);
+  const { tweets, handleDelete } = useContext(CollectionContext);
+  const { user } = useContext(UserGoogleContext);
   const { usersName } = useContext(UserContext);
+
   const [disabled, setDisabled] = useState(false);
   const [isMounted, setIsMouted] = useState(false);
   const [sentTweet, setSentTweet] = useState({

@@ -1,28 +1,35 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import { CollectionContext } from "../../context/efectTweets";
 import { firebase } from "../../firebase/firebaseConfig";
+import { CollectionContext } from "../../context/efectTweets";
+import { UserGoogleContext } from "../../context/UserGoogleContext";
 import { IoIosArrowBack, IoIosLogOut } from "react-icons/io";
 
 import userPhoto from "../../images/user.png";
 import Posted from "./Posted";
 import Favorites from "./Favorite";
 
-import "./profile.css";
-import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import "./profile.css";
+import { UserContext } from "../../context/UsernameContext";
+
 const Profile = () => {
+  const history = useHistory();
+
   const [tabs, setTabs] = useState(0);
 
-  const { user, tweets } = useContext(CollectionContext);
-
-  const history = useHistory();
+  const { tweets } = useContext(CollectionContext);
+  const { user } = useContext(UserGoogleContext);
+  const { setUsersName } = useContext(UserContext);
 
   const logout = async () => {
     try {
+      setUsersName({});
       await firebase.auth().signOut();
       Swal.fire("", "Se ha deslogueado con exito", "success");
+      history.replace("/register");
     } catch (error) {
       Swal.fire("", error.mesagge, "error");
     }
@@ -79,6 +86,7 @@ const Profile = () => {
             <div hidden={tabs !== 0}>
               {tweets.map(
                 (posted) =>
+                  user &&
                   posted.username.uid === user.uid && (
                     <Posted
                       key={posted.id}

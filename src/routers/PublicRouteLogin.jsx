@@ -12,7 +12,7 @@ const PublicRouteLogin = ({
     <Route
       {...rest}
       component={(props) =>
-        usersName.uid !== undefined ? (
+        !isAuthenticated || usersName.uid !== undefined ? (
           <Redirect to="/" />
         ) : (
           <Component {...props} />

@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { firestore } from "../firebase/firebaseConfig";
-import { CollectionContext } from "./efectTweets";
+import { UserGoogleContext } from "./UserGoogleContext";
 
 const UserContext = createContext();
 
 const UsernameContext = ({ children }) => {
-  const { user } = useContext(CollectionContext);
-  const [usersName, setUsersName] = useState([]);
+  const { user } = useContext(UserGoogleContext);
+  const [usersName, setUsersName] = useState({});
 
   useEffect(() => {
     firestore
@@ -26,6 +26,7 @@ const UsernameContext = ({ children }) => {
 
   const returns = {
     usersName,
+    setUsersName,
   };
 
   return (

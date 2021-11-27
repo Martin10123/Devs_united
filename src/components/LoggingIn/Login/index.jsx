@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
-import { CollectionContext } from "../../../context/efectTweets";
+import { UserGoogleContext } from "../../../context/UserGoogleContext";
+import { UserContext } from "../../../context/UsernameContext";
 import { firestore } from "../../../firebase/firebaseConfig";
 
 import logo from "../../../images/logo.svg";
@@ -19,14 +19,13 @@ const colors = [
 ];
 
 const Login = () => {
-  const { user } = useContext(CollectionContext);
+  const { user } = useContext(UserGoogleContext);
+  const { setUsersName } = useContext(UserContext);
   const [colorSelect, setColorSelect] = useState(colors[0]);
   const [disabledUser, setDisabledUser] = useState(false);
   const [sentUser, setSentUser] = useState({
     user: "",
   });
-
-  const history = useHistory();
 
   const handleChangeUser = ({ target }) => {
     const newData = {
@@ -35,7 +34,6 @@ const Login = () => {
       uid: user.uid,
     };
 
-    console.log(newData);
     setSentUser(newData);
   };
 
@@ -50,17 +48,17 @@ const Login = () => {
     }
   }, [sentUser.user]);
 
-  const handleChangeColor = (id, color) => {
-    console.log(id, color);
+  const handleChangeColor = (color) => {
     setColorSelect(color);
   };
 
   const handleInputChange = async (e) => {
     e.preventDefault();
     try {
-      await firestore.collection("users").add(sentUser);
-      setSentUser({ user: "" });
-      history.go(0);
+      const usersRef = await firestore.collection("users").add(sentUser);
+      const documentRef = await usersRef.get();
+
+      setUsersName(documentRef.data());
     } catch (error) {
       Swal.fire("", error.message, "error");
     }
@@ -96,7 +94,7 @@ const Login = () => {
                       key={i}
                       className="contain_color"
                       style={{ backgroundColor: color.hex }}
-                      onClick={() => handleChangeColor(i, color)}
+                      onClick={() => handleChangeColor(color)}
                     />
                   ))}
                 </div>

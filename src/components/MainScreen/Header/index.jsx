@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CollectionContext } from "../../../context/efectTweets";
+import { UserGoogleContext } from "../../../context/UserGoogleContext";
 
 import logo from "../../../images/aloneLogo.svg";
 import title from "../../../images/titleLogo.svg";
@@ -10,7 +10,7 @@ import Filtros from "../Filtros";
 import "./header.css";
 
 const Header = () => {
-  const { user } = useContext(CollectionContext);
+  const { user } = useContext(UserGoogleContext);
 
   return (
     <>
