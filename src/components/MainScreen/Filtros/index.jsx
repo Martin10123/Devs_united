@@ -6,7 +6,11 @@ import Swal from "sweetalert2";
 import { CollectionContext } from "../../../context/efectTweets";
 import { UserGoogleContext } from "../../../context/UserGoogleContext";
 import { UserContext } from "../../../context/UsernameContext";
-import { collections, firestore } from "../../../firebase/firebaseConfig";
+import {
+  collections,
+  firestore,
+  firebase,
+} from "../../../firebase/firebaseConfig";
 
 import userImg from "../../../images/user.png";
 import ViewTweets from "../ViewTweets";
@@ -42,6 +46,7 @@ const Filtros = () => {
       tweet: target.value,
       date: new Date().getTime(),
       url: user?.photoURL,
+      likes: [],
       ...usersName,
     };
     setSentTweet(nuevoArrayValues);
@@ -59,14 +64,21 @@ const Filtros = () => {
     }
   };
 
-  const handleLike = async (id, uid) => {
-    console.log(id, "Yo soy el documento");
-    console.log(uid, "Yo soy el usuario");
-    // try {
-    //   await firestore.doc(`${collections.tweets}/${id}`).update(id, uid);
-    // } catch (error) {
-    //   Swal.fire("", error.message, "error");
-    // }
+  const handleLike = async (uuidTweet, uuidUser, isLike) => {
+    try {
+      const fieldValueRef = firebase.firestore.FieldValue;
+
+      await firestore
+        .collection("tweets")
+        .doc(uuidTweet)
+        .update({
+          likes: isLike
+            ? fieldValueRef.arrayRemove(uuidUser)
+            : fieldValueRef.arrayUnion(uuidUser),
+        });
+    } catch (error) {
+      Swal.fire("", error.message, "error");
+    }
   };
 
   if (!isMounted) {
