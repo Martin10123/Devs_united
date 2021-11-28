@@ -12,7 +12,7 @@ import SecondRouter from "./SecondRouter";
 import PublicRouteLogin from "./PublicRouteLogin";
 
 const AppRouter = () => {
-  const { loading, authenticated } = useContext(UserGoogleContext);
+  const { user, loading, authenticated } = useContext(UserGoogleContext);
   const { usersName } = useContext(UserContext);
 
   if (loading) {
@@ -21,6 +21,8 @@ const AppRouter = () => {
 
   return (
     <Router>
+      {!user?.uid && <LoadingPage />}
+      {usersName.uid === undefined && <LoadingPage />}
       <div>
         <Switch>
           <PublicRoute
