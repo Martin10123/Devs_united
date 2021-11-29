@@ -22,8 +22,8 @@ const Posted = ({ id, tweet, color, user, date, url }) => {
         )}
         <div className="posted__contain__info_posted">
           <div className="posted__info_user">
-            <p style={{ backgroundColor: color }}>{user}</p> <b>__</b>{" "}
-            <p>{dateNote.calendar()}</p>
+            <p style={{ backgroundColor: color }}>{user}</p> <b>__</b>
+            <p>{dateNote.startOf("").fromNow()}</p>
           </div>
           <div className="posted__description">
             <p>{tweet}</p>

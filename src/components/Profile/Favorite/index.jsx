@@ -1,36 +1,29 @@
 import React from "react";
+import moment from "moment";
+import "moment/locale/es";
 
-import user from "../../../images/user.png";
-import noLike from "../../../images/noLike.svg";
-import trash from "../../../images/trash.svg";
+import userImg from "../../../images/user.png";
 
 import "./favorite.css";
 
-const Favorites = () => {
+const Favorites = ({ id, tweet, color, user, date, url }) => {
+  const dateNote = moment(date);
+
   return (
     <div className="favorite__box">
       <div className="favorite__content">
-        <img src={user} alt="imagen usuario" />
+        {url ? (
+          <img src={url} alt="imagen usuario" />
+        ) : (
+          <img src={userImg} alt="imagen usuario" />
+        )}
         <div className="favorite__contain__info_favorite">
           <div className="favorite__info_user">
-            <p>Pedro Perez</p> <b>__</b> <p>20 jun</p>
+            <p style={{ background: color }}>{user}</p> <b>__</b>
+            <p>{dateNote.startOf("").fromNow()}</p>
           </div>
           <div className="favorite__description">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Doloribus, nihil? Nisi dolorem molestias commodi consequuntur
-              modi, impedit asperiores doloribus autem ipsam ex ab pariatur,
-              nobis blanditiis. Perspiciatis temporibus facere quam.
-            </p>
-          </div>
-          <div className="favorite__btns">
-            <button>
-              <img src={noLike} alt="no like" />
-              <p>0</p>
-            </button>
-            <button>
-              <img src={trash} alt="trash" />
-            </button>
+            <p>{tweet}</p>
           </div>
         </div>
       </div>

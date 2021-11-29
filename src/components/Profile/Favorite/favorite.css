@@ -33,6 +33,9 @@
 .favorite__info_user p {
   height: 100%;
   font-size: 1.4rem;
+}
+
+.favorite__info_user p:last-child {
   color: #fff;
 }
 

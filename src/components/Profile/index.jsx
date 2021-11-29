@@ -97,7 +97,12 @@ const Profile = () => {
               )}
             </div>
             <div hidden={tabs !== 1}>
-              <Favorites />
+              {tweets.map(
+                (favorite) =>
+                  favorite.username.likes.includes(user.uid) && (
+                    <Favorites key={favorite.id} {...favorite.username} />
+                  )
+              )}
             </div>
           </div>
         </div>

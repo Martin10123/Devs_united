@@ -32,7 +32,7 @@ const ViewTweets = ({ data, handleDelete, clickSubmitLike }) => {
             >
               {data.username.user}
             </p>
-            <b>__</b> <p>{dateNote.startOf("hour").fromNow()}</p>
+            <b>__</b> <p>{dateNote.startOf("").fromNow()}</p>
           </div>
           <div className="tweet__description">
             <p>{data.username.tweet}</p>
