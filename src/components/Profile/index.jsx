@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 import { CollectionContext } from "../../context/efectTweets";
 // import { firebase } from "../../firebase/firebaseConfig";
-import { IoIosArrowBack, IoIosLogOut } from "react-icons/io";
+import { IoIosArrowBack, IoMdArrowDropup } from "react-icons/io";
 import { AiFillCaretDown } from "react-icons/ai";
 
 import userPhoto from "../../images/user.png";
@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
+  const [showMenu, setShowMenu] = useState(false);
 
   const { user, tweets } = useContext(CollectionContext);
 
@@ -29,6 +30,10 @@ const Profile = () => {
   //   }
   // };
 
+  const showMenuInfo = () => {
+    setShowMenu(!showMenu);
+  };
+
   const returnHome = () => {
     history.replace("/home");
   };
@@ -42,16 +47,31 @@ const Profile = () => {
             <IoIosArrowBack className="logo_back" />
             {user?.displayName ? <p>{user.displayName}</p> : <p>Username</p>}
           </span>
-          <button>
-            <AiFillCaretDown className="down_icons" />
-          </button>
-          <div className="profile_dropdown">
-            <h2>{user?.displayName}</h2>
-            <ul className="profile_ul_dropdown">
-              <li>Cambiar mi nombre de usuario</li>
-              <li>Cerrar cessión</li>
-              <li>Borrar mi cuenta</li>
-            </ul>
+          <div className="container_dropdown">
+            {showMenu ? (
+              <button className="dropdown_button" onClick={showMenuInfo}>
+                <AiFillCaretDown className="down_icons" />
+              </button>
+            ) : (
+              <button className="dropdown_button" onClick={showMenuInfo}>
+                <IoMdArrowDropup className="down_icons" />
+              </button>
+            )}
+            {showMenu && (
+              <div className="dropdown_profile">
+                <ul>
+                  <li>
+                    <span className="username">Change username</span>
+                  </li>
+                  <li>
+                    <span className="delete">Delete account</span>
+                  </li>
+                  <li>
+                    <span className="logout">Logout</span>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

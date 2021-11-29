@@ -34,9 +34,22 @@
   font-size: 1.5rem;
 }
 
-.header__user_profile button {
-  width: 3rem;
-  height: 3rem;
+/* gropdown */
+
+.container_dropdown {
+  width: 93%;
+  position: absolute;
+  top: 0.7rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 20;
+}
+
+.dropdown_button {
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background: transparent;
   border: 1px solid white;
@@ -46,45 +59,31 @@
   cursor: pointer;
 }
 
+.dropdown_profile {
+  width: 90%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #000000;
+  position: relative;
+  top: 0.7rem;
+}
+
+.dropdown_profile ul li {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+.dropdown_profile ul li span {
+  color: #fff;
+  cursor: pointer;
+}
+
 .down_icons {
   font-size: 2rem;
   color: white;
 }
 
-.profile_dropdown {
-  width: 16rem;
-  padding: 1.5rem;
-  border-radius: 1.5rem;
-  position: absolute;
-  left: 36%;
-  top: 100%;
-  z-index: 20;
-  background: white;
-  color: black;
-}
-
-.profile_dropdown::before {
-  content: "";
-  display: block;
-  width: 1.8rem;
-  height: 1.8rem;
-  background: white;
-  position: absolute;
-  transform: rotate(45deg);
-  left: 81%;
-  top: -2%;
-}
-
-.profile_dropdown > h2 {
-  font-size: 2rem;
-  text-align: center;
-}
-
-ul.profile_ul_dropdown {
-}
-
-ul.profile_ul_dropdown li {
-}
+/* gropdown */
 
 .header__photo_profile {
   width: 100%;
@@ -145,6 +144,10 @@ ul.profile_ul_dropdown li {
   .header__photo_content p {
     font-size: 2.5rem;
   }
+
+  .dropdown_profile {
+    width: 55%;
+  }
 }
 
 @media (min-width: 1020px) and (max-width: 1300px) {
@@ -161,10 +164,9 @@ ul.profile_ul_dropdown li {
     font-size: 3.2rem;
   }
 
-  .header__user_profile button {
-    /* width: 12rem;
-    height: 3.8rem;
-    font-size: 2.3rem; */
+  .dropdown_button {
+    width: 3.5rem;
+    height: 3.5rem;
   }
 
   .header__info_post h2,
@@ -186,5 +188,10 @@ ul.profile_ul_dropdown li {
   .header__profile_content {
     width: 50%;
     margin: 0 auto;
+  }
+
+  .container_dropdown {
+    width: 71%;
+    top: 0.4567rem;
   }
 }
