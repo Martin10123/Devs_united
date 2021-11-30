@@ -59,42 +59,13 @@
   letter-spacing: 1.666667px;
 }
 
-.favorite__btns {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.favorite__btns button:nth-child(1) {
-  display: flex;
-  align-items: center;
-}
-
-.favorite__btns button:nth-child(1) > img {
-  width: 2rem;
-}
-
-.favorite__btns button:nth-child(1) > p {
-  color: #fff;
-  padding-left: 1rem;
-  font-size: 1.5rem;
-}
-
-.favorite__btns button:nth-child(1),
-.favorite__btns button:nth-child(2) {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
 @media (min-width: 1020px) and (max-width: 1300px) {
   .favorite__content > img {
-    width: 9rem;
+    width: 4.5rem;
   }
 
   .favorite__info_user p {
-    font-size: 2.7rem;
+    font-size: 1.7rem;
   }
 
   .favorite__info_user b {
@@ -102,19 +73,6 @@
   }
 
   .favorite__description p {
-    font-size: 2rem;
-  }
-
-  .favorite__btns button:nth-child(1) > img,
-  .favorite__btns button:nth-child(2) > img {
-    width: 4rem;
-  }
-
-  .favorite__btns button:nth-child(1) > p {
-    font-size: 3.5rem;
-  }
-
-  .favorite__btns {
-    margin: 1rem 0;
+    font-size: 1.7rem;
   }
 }

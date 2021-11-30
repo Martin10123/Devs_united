@@ -7,6 +7,7 @@ const UserContext = createContext();
 const UsernameContext = ({ children }) => {
   const { user } = useContext(UserGoogleContext);
   const [usersName, setUsersName] = useState({});
+  const [loadingUsername, setLoadingUsername] = useState(true);
 
   useEffect(() => {
     firestore
@@ -16,6 +17,7 @@ const UsernameContext = ({ children }) => {
         querySnapshot.forEach((doc) => {
           if (user?.uid === doc.data().uid) {
             setUsersName(doc.data());
+            setLoadingUsername(false);
           }
         });
       })
@@ -27,6 +29,7 @@ const UsernameContext = ({ children }) => {
   const returns = {
     usersName,
     setUsersName,
+    loadingUsername,
   };
 
   return (

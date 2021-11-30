@@ -13,9 +13,8 @@ export const UserContext = ({ children }) => {
       setUser(user);
       const isAuthenticated = user ? true : false;
       setAuthenticated(isAuthenticated);
+      setLoading(false);
     });
-
-    setLoading(false);
   }, []);
 
   const userGoogle = {

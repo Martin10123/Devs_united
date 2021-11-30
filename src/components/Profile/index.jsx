@@ -2,9 +2,16 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { firebase } from "../../firebase/firebaseConfig";
+import { UserContext } from "../../context/UsernameContext";
 import { CollectionContext } from "../../context/efectTweets";
 import { UserGoogleContext } from "../../context/UserGoogleContext";
-import { IoIosArrowBack, IoIosLogOut } from "react-icons/io";
+import { IoIosArrowBack, IoMdArrowDropup } from "react-icons/io";
+import { AiFillCaretDown } from "react-icons/ai";
+import {
+  MdOutlineChangeCircle,
+  // MdDeleteForever,
+  MdLogout,
+} from "react-icons/md";
 
 import userPhoto from "../../images/user.png";
 import Posted from "./Posted";
@@ -13,12 +20,12 @@ import Favorites from "./Favorite";
 import Swal from "sweetalert2";
 
 import "./profile.css";
-import { UserContext } from "../../context/UsernameContext";
 
 const Profile = () => {
   const history = useHistory();
 
   const [tabs, setTabs] = useState(0);
+  const [showMenu, setShowMenu] = useState(false);
 
   const { tweets } = useContext(CollectionContext);
   const { user } = useContext(UserGoogleContext);
@@ -35,8 +42,12 @@ const Profile = () => {
     }
   };
 
+  const showMenuInfo = () => {
+    setShowMenu(!showMenu);
+  };
+
   const returnHome = () => {
-    history.replace("/home");
+    history.push("/home");
   };
 
   return (
@@ -48,10 +59,33 @@ const Profile = () => {
             <IoIosArrowBack className="logo_back" />
             {user?.displayName ? <p>{user.displayName}</p> : <p>Username</p>}
           </span>
-          <button onClick={logout}>
-            <span>Logout</span>
-            <IoIosLogOut />
-          </button>
+          <div className="container_dropdown">
+            {showMenu ? (
+              <button className="dropdown_button" onClick={showMenuInfo}>
+                <AiFillCaretDown className="down_icons" />
+              </button>
+            ) : (
+              <button className="dropdown_button" onClick={showMenuInfo}>
+                <IoMdArrowDropup className="down_icons" />
+              </button>
+            )}
+            {showMenu && (
+              <div className="dropdown_profile">
+                <ul>
+                  <li>
+                    <MdOutlineChangeCircle />
+                    <span className="username">Change username</span>
+                  </li>
+                  <li>
+                    <MdLogout />
+                    <span onClick={logout} className="logout">
+                      Logout
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="header__photo_profile">
