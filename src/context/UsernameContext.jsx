@@ -14,10 +14,10 @@ const UsernameContext = ({ children }) => {
       .collection("users")
       .get()
       .then((querySnapshot) => {
+        setLoadingUsername(false);
         querySnapshot.forEach((doc) => {
           if (user?.uid === doc.data().uid) {
-            setUsersName(doc.data());
-            setLoadingUsername(false);
+            setUsersName({ doc_id: doc.id, ...doc.data() });
           }
         });
       })

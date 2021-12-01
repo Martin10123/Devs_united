@@ -14,7 +14,7 @@
 }
 
 .header__profile_content {
-  width: 63%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,66 +34,23 @@
   font-size: 1.5rem;
 }
 
-/* gropdown */
-
-.container_dropdown {
-  width: 22%;
-  position: absolute;
-  top: 0.7rem;
-  left: 17rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  z-index: 20;
-}
-
-.dropdown_button {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.dropdown_profile {
-  /* width: 100%; */
-  padding: 1rem;
-  border-radius: 1rem;
-  background: #000000;
-  position: relative;
-  top: 0.7rem;
-}
-
-.dropdown_profile ul li {
-  font-size: 1.8rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid;
-  display: flex;
-  align-items: center;
-}
-
-.dropdown_profile ul li span {
-  color: #fff;
-  cursor: pointer;
-  padding-left: 1rem;
-}
-
-.down_icons {
-  font-size: 2rem;
-  color: white;
-}
-
-/* gropdown */
-
 .header__photo_profile {
   width: 100%;
   position: relative;
   box-sizing: border-box;
   background: #2d132c;
+}
+
+.btn_logout {
+  width: 7rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.3rem;
+  background: #f50d5a;
+  border: none;
+  cursor: pointer;
 }
 
 .header__photo_content {
@@ -140,19 +97,6 @@
   background: #60265b;
 }
 
-@media (min-width: 411px) {
-  .container_dropdown {
-    width: 31%;
-  }
-}
-
-@media (min-width: 540px) {
-  .container_dropdown {
-    width: 48%;
-    left: 17rem;
-  }
-}
-
 @media (min-width: 768px) {
   .header__photo_content img {
     width: 50%;
@@ -160,11 +104,6 @@
 
   .header__photo_content p {
     font-size: 3rem;
-  }
-
-  .container_dropdown {
-    width: 25%;
-    left: 36rem;
   }
 }
 
@@ -180,11 +119,6 @@
   .logo_back,
   .header__user_profile p {
     font-size: 1.8rem;
-  }
-
-  .dropdown_button {
-    width: 2rem;
-    height: 2rem;
   }
 
   .header__info_post h2,
@@ -206,10 +140,5 @@
   .header__profile_content {
     width: 50%;
     margin: 0 auto;
-  }
-
-  .container_dropdown {
-    left: 40rem;
-    top: 0.6rem;
   }
 }
