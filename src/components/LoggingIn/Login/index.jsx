@@ -23,30 +23,19 @@ const Login = () => {
   const { setUsersName } = useContext(UserContext);
   const [colorSelect, setColorSelect] = useState(colors[0]);
   const [disabledUser, setDisabledUser] = useState(false);
-  const [sentUser, setSentUser] = useState({
-    user: "",
-  });
+  const [sentUser, setSentUser] = useState("");
 
   const handleChangeUser = ({ target }) => {
-    const newData = {
-      user: target.value,
-      color: colorSelect.hex,
-      uid: user.uid,
-    };
-
-    setSentUser(newData);
+    setSentUser(target.value);
   };
 
   useEffect(() => {
-    if (
-      sentUser.user?.trim().length <= 4 &&
-      sentUser.user?.trim().length <= 25
-    ) {
+    if (sentUser.trim().length <= 4 && sentUser.trim().length <= 25) {
       setDisabledUser(false);
     } else {
       setDisabledUser(true);
     }
-  }, [sentUser.user]);
+  }, [sentUser]);
 
   const handleChangeColor = (color) => {
     setColorSelect(color);
@@ -55,7 +44,9 @@ const Login = () => {
   const handleInputChange = async (e) => {
     e.preventDefault();
     try {
-      const usersRef = await firestore.collection("users").add(sentUser);
+      const usersRef = await firestore
+        .collection("users")
+        .add({ user: sentUser, color: colorSelect.hex, uid: user.uid });
       const documentRef = await usersRef.get();
 
       setUsersName(documentRef.data());
@@ -79,7 +70,7 @@ const Login = () => {
             <form onSubmit={handleInputChange} className="form__login">
               <input
                 name="user"
-                value={sentUser?.user}
+                value={sentUser}
                 onChange={handleChangeUser}
                 autoComplete="off"
                 maxLength="25"
