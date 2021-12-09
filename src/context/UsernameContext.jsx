@@ -10,21 +10,23 @@ const UsernameContext = ({ children }) => {
   const [loadingUsername, setLoadingUsername] = useState(true);
 
   useEffect(() => {
-    firestore
-      .collection("users")
-      .get()
-      .then((querySnapshot) => {
-        setLoadingUsername(false);
-        querySnapshot.forEach((doc) => {
-          if (user?.uid === doc.data().uid) {
-            setUsersName({ doc_id: doc.id, ...doc.data() });
-          }
+    if (user) {
+      firestore
+        .collection("users")
+        .get()
+        .then((querySnapshot) => {
+          setLoadingUsername(false);
+          querySnapshot.forEach((doc) => {
+            if (user?.uid === doc.data().uid) {
+              setUsersName({ doc_id: doc.id, ...doc.data() });
+            }
+          });
+        })
+        .catch((error) => {
+          console.log(error);
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [user?.uid]);
+    }
+  }, [user]);
 
   const returns = {
     usersName,

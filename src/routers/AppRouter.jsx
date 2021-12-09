@@ -15,8 +15,10 @@ const AppRouter = () => {
   const { loading, authenticated } = useContext(UserGoogleContext);
   const { usersName, loadingUsername } = useContext(UserContext);
 
-  if (loading || loadingUsername) {
-    return <LoadingPage />;
+  if ((loading && loadingUsername) || (authenticated && !usersName.user)) {
+    if (loadingUsername) {
+      return <LoadingPage />;
+    }
   }
 
   return (
